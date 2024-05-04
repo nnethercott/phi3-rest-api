@@ -1,0 +1,24 @@
+<!-- todo_list/todo_app/templates/todo_app/index.html -->
+<style>
+.img-inference{
+width: 100%;
+margin-top:2em;
+}
+</style>
+{% extends "home.html" %}
+{% block content %}
+<!-- <!--index.html-->
+{% if context %}
+<h3>inference history - mobilenetv2 onnx</h3>
+{% endif %}
+{% for item in context.objects %}
+<div class = "img-inference">
+  <img src="{{ url_for('static', filename='images/' + item) }}" alt="My Image">
+</div>
+{% endfor %}
+{% if context.objects|length == 0%}
+<h3>send some pics!</h3>
+{% endif %}
+
+{% endblock %}
+

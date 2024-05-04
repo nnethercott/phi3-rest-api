@@ -1,0 +1,15 @@
+version: "3"
+services:
+  redis:
+    image: "redis:latest"
+  worker:
+    build:
+      dockerfile: Dockerfile      
+      context: .
+    ports: 
+      - "4440:4440"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ~/.cache/huggingface/hub/:/app/models
+      # - ./:/app
